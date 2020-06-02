@@ -1,57 +1,43 @@
 <template>
   <div>
-    <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
-      <label class="form__label">Name</label>
-      <input v-model.trim="$v.name.$model" class="form__input" />
+    <div>
+      <label>Name</label>
+      <input v-model.trim="form.name" />
+      <div v-if="!$v.form.name.required">Field is required</div>
+      <div v-if="!$v.form.name.minLength">
+        Name must have at least
+        {{ $v.form.name.$params.minLength.min }} letters.
+      </div>
+      <div>
+        <label>Age</label>
+        <input v-model.trim.lazy="form.age" />
+        <div v-if="!$v.form.age.between">
+          Must be between {{ $v.form.age.$params.between.min }} and
+          {{ $v.form.age.$params.between.max }}
+        </div>
+      </div>
     </div>
-    <div v-if="!$v.name.required" class="error">Field is required</div>
-    <div v-if="!$v.name.minLength" class="error">
-      Name must have at least {{ $v.name.$params.minLength.min }} letters.
-    </div>
-    <tree-view
-      :data="$v.name"
-      :options="{ rootObjectKey: '$v.name', maxDepth: 2 }"
-    ></tree-view>
-    <div class="form-group" :class="{ 'form-group--error': $v.age.$error }">
-      <label class="form__label">Age</label>
-      <input v-model.trim.lazy="$v.age.$model" class="form__input" />
-    </div>
-    <div v-if="!$v.age.between" class="error">
-      Must be between {{ $v.age.$params.between.min }} and
-      {{ $v.age.$params.between.max }}
-    </div>
-    <span tabindex="0">Blur to see changes</span>
-    <tree-view
-      :data="$v.age"
-      :options="{ rootObjectKey: '$v.age', maxDepth: 2 }"
-    ></tree-view>
-    <p>{{ $v }}</p>
-    <p>{{ $v.name }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { validationMixin } from 'vuelidate'
-import { required, minLength, between } from 'vuelidate/lib/validators'
 import Vue from 'vue'
+import { FormParams, validations } from './FormParamsBuilder'
+
+interface DataType {
+  form: FormParams
+}
 
 export default Vue.extend({
   mixins: [validationMixin],
   data() {
     return {
-      name: '',
-      age: 0
+      form: { name: 'default', age: 0 }
     }
   },
-  computed: {},
   validations: {
-    name: {
-      required,
-      minLength: minLength(4)
-    },
-    age: {
-      between: between(20, 30)
-    }
+    form: validations
   }
 })
 </script>
