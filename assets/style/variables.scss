@@ -1,0 +1,148 @@
+//## Font Family関係の定義
+// ========================================================================
+
+// ローカル上のヒラギノ系列新旧フォントをマイグレート
+// font-weightを数値指定できるようにするための定義
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 100;
+  src: local(HiraginoSans-W1), local('Hiragino Sans');
+}
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 200;
+  src: local(HiraginoSans-W2), local('Hiragino Sans');
+}
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local(HiraginoSans-W3), local('Hiragino Sans');
+}
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local(HiraginoSans-W4), local('Hiragino Sans');
+}
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local(HiraginoSans-W5), local('Hiragino Sans');
+}
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local(HiraginoSans-W6), local('Hiragino Sans');
+}
+@font-face {
+  font-family: 'Hiragino Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(HiraginoSans-W7), local('Hiragino Sans');
+}
+
+$jp-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Sans', 'Noto Sans', 'Noto Sans CJK JP', Meiryo, sans-serif;
+$en-font-family: 'Segoe UI', 'San Francisco', 'Helvetica Neue', 'Roboto', sans-serif;
+
+
+//## Colorコード関係の定義
+// ========================================================================
+
+// 他社のサービスカラー
+$facebook-color: #1877F2;
+
+
+//## z-index関係の定義
+// ========================================================================
+
+$header-navigation-z-index: 50;
+$pc-header-z-index: 50;
+$profile-create-flow-header-z-index: 100;
+$floating-alert-z-index: 100;
+$onboarding-overlay-z-index: 400;
+$overlay-component-z-index: 200;
+$loading-overlay-z-index: 500;
+
+
+//## レスポンシブ関係の定義
+// ========================================================================
+
+// Mobile, Pad, PCの３つで分けることになったら $breakpoints-up のコメントアウトと一緒にコメントアウトをはずす。
+// $small-screen: 480px !default; // iPhone Plusで414だが、Androidの端末種が多いので余裕を持たせている。
+$medium-screen-width: 1024px !default; // iPad Proの大きさ
+$breakpoints-up: (
+  // "m":  "(min-width: #{$small-screen})",
+  "l":  "(min-width: #{$medium-screen-width})"
+) !default;
+
+
+//## ガイドライン関係の定義
+//## ガイドラインに準拠した値であることがわかりやすいように、プリフィックスに g- をつけるようにしている。
+// ========================================================================
+
+// Size
+$g-size-4: 4px;
+$g-size-8: 8px;
+$g-size-12: 12px;
+$g-size-16: 16px;
+$g-size-24: 24px;
+$g-size-32: 32px;
+$g-size-64: 64px;
+$g-sizes: 0, 4, 8, 12, 16, 24, 32, 64;
+
+// Width
+$g-pc-wide-container-width: 1140px;
+$g-pc-narrow-container-width: 640px;
+
+// Height
+$g-pc-header-height: 64px;
+$g-mobile-header-height: 64px;
+
+// Padding
+$g-mobile-side-padding: $g-size-16;
+
+// Form
+$g-form-side-icon-area-width: 36px;
+
+// Width
+$g-desktop-max-wide-width: 1024px;
+$g-desktop-contents-minimum-width: 640px;
+
+// Height
+$g-desktop-header-navigation-height: 64px;
+$g-mobile-header-navigation-height: 64px;
+
+
+//## 色関係の定義
+// ========================================================================
+
+// Base Color
+$black: #000;
+$white: #FFF;
+
+// Site Color
+$main-color: #0C3167;
+$key-color: #31A0ED;
+$attention-color: #FF6455;
+
+// Color of Gray
+$gray-1: rgba($black, 0.87);
+$gray-2: rgba($black, 0.60);
+$gray-3: rgba($black, 0.38);
+$gray-4: rgba($black, 0.24);
+$gray-5: rgba($black, 0.12);
+
+// Special Color
+$placeholder-color: $gray-3;
+$link-color: $key-color;
+$form-border-color: $gray-5;
+
+// Color of Background
+$background-skyblue-color: #E8F4FF;
+$background-gray-color: #F6F6F6;
+$background-gray-2-color: #9E9E9E;

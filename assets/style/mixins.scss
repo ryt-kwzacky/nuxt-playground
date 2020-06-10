@@ -1,0 +1,8 @@
+@import 'variables';
+
+ // メディアクエリ生成用のmixin（モバイルファースト）
+@mixin mq-up($breakpoint: l) {
+  @media #{map-get($breakpoints-up, $breakpoint)} {
+    @content;
+  }
+}
