@@ -1,3 +1,6 @@
+require('dotenv').config()
+const { FIREBASE_PROJECT_ID, FIREBASE_DATABASE_URL } = process.env
+
 export default {
   mode: 'spa',
   /*
@@ -37,7 +40,12 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    /*
+     * Firebase Javascript SDKの初期化用のプラグイン設定
+     */
+    '~/plugins/firebase'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -66,5 +74,9 @@ export default {
      ** You can extend webpack config here
      */
     extend() {}
+  },
+  env: {
+    FIREBASE_PROJECT_ID: FIREBASE_PROJECT_ID || '',
+    FIREBASE_DATABASE_URL: FIREBASE_DATABASE_URL || ''
   }
 }
